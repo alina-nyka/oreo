@@ -1,0 +1,19 @@
+# Vagrant
+.vagrant/
+
+# Actions runner (DO NOT COMMIT)
+vagrant/actions-runner/
+
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+!.terraform.lock.hcl
+
+# OS / misc
+.DS_Store
+*.log
+
+# Archives
+*.tar.gz
