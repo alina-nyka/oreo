@@ -29,3 +29,14 @@ jobs:
           context: ./vagrant/app/backend
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/devops-backend:latest
+
+  deploy-k8s:
+    needs: build-and-push
+    runs-on: self-hosted
+
+    steps:
+      - name: Restart backend deployment
+        run: |
+          cd /vagrant/k8s
+          kubectl rollout restart deployment/backend-deployment
+          kubectl rollout status deployment/backend-deployment          
