@@ -49,7 +49,7 @@ def home():
     conn.close()
 
     return {
-        "message": "DevOps portfolio project with PostgreSQL!",
+        "message": "DevOps portfolio project with PostgreSQL! + git actions",
         "hostname": hostname,
         "visits": count
     }
