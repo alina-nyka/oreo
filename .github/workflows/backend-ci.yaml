@@ -41,3 +41,15 @@ jobs:
         run: |
           kubectl set image deployment/backend-deployment backend=${{ secrets.DOCKERHUB_USERNAME }}/devops-backend:${{ github.sha }}
           kubectl rollout status deployment/backend-deployment
+
+  deploy-ec2:
+    needs: build-and-push
+    runs-on: self-hosted
+
+    steps:
+      - name: Deploy on EC2
+        run: |
+          cd ~/app-deploy
+          docker-compose pull
+          docker-compose up -d
+          docker image prune -f
