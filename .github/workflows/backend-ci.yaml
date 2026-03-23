@@ -34,7 +34,7 @@ jobs:
 
   deploy-k8s:
     needs: build-and-push
-    runs-on: self-hosted
+    runs-on: [self-hosted, k8s-runner]
 
     steps:
       - name: Set deployment image to exact version
@@ -44,12 +44,13 @@ jobs:
 
   deploy-ec2:
     needs: build-and-push
-    runs-on: self-hosted
+    runs-on: [self-hosted, ec2-runner]
 
     steps:
       - name: Deploy on EC2
         run: |
           cd ~/app-deploy
+          docker-compose down
           docker-compose pull
           docker-compose up -d
           docker image prune -f
