@@ -49,7 +49,7 @@ def home():
     conn.close()
 
     return {
-            "message": "DevOps pipeline WORKING 🚀 v2 + SHA-tagged deploy+ autodeploy on EC2",
+            "message": "DevOps pipeline WORKING 🚀 v2 + SHA-tagged deploy+ autodeploy on EC2 V:2",
             "hostname": hostname,
         "visits": count
     }
