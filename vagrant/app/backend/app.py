@@ -49,7 +49,7 @@ def home():
     conn.close()
 
     return {
-            "message": "Health check",
+            "message": "Health check V:2",
             "hostname": hostname,
         "visits": count
     }
