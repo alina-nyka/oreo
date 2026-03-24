@@ -41,6 +41,7 @@ jobs:
         run: |
           kubectl set image deployment/backend-deployment backend=${{ secrets.DOCKERHUB_USERNAME }}/devops-backend:${{ github.sha }}
           kubectl rollout status deployment/backend-deployment
+          kubectl get pods
 
   deploy-ec2:
     needs: build-and-push
@@ -53,4 +54,6 @@ jobs:
           docker-compose down
           docker-compose pull
           docker-compose up -d
+          sleep 10
+          curl -f https://app.alinyka.xyz/health
           docker image prune -f
